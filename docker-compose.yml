@@ -1,0 +1,23 @@
+version: '2'
+services:
+  jenkins:
+    image: jenkins-docker
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    networks:
+      - jenkins
+    volumes:
+      - $PWD/jenkins_home:/var/jenkins_home 
+      - /Users/gareth/Library/Containers/com.docker.docker/Data/docker.sock:/var/run/docker.sock 
+      - /Users/gareth/eclipse-workspace/com.sample2:$PWD/eclipse-workspace/com.sample2
+      - $PWD/maven:/usr/local/maven/
+      #- /var/jenkins_home:/var/jenkins_home
+      #- /var/run/docker.sock:/var/run/docker.sock
+      #- /Users/gareth/eclipse-workspace/com.sample2:$PWD/eclipse-workspace/com.sample2
+      #- /usr/local/maven:/usr/local/maven/
+
+networks:
+  jenkins:
+
+
